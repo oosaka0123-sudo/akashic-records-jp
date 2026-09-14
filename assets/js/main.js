@@ -23,3 +23,14 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   const media=document.querySelector('.hero-media');
   if(hero&&media){let ticking=false;addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{const r=hero.getBoundingClientRect();const p=Math.max(0,Math.min(1,-r.top/innerHeight));media.style.transform=`translate3d(0,${p*28}px,0) scale(${1+p*.035})`;ticking=false;});},{passive:true});}
 }
+
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const depth=document.querySelector('.memory-depth');
+  const universe=document.querySelector('.depth-universe');
+  const archive=document.querySelector('.depth-archive');
+  if(depth&&universe&&archive){
+    let depthTick=false;
+    const renderDepth=()=>{const r=depth.getBoundingClientRect();const p=Math.max(-1,Math.min(1,(innerHeight/2-(r.top+r.height/2))/innerHeight));universe.style.transform=`translate3d(0,${p*24}px,0) scale(1.1)`;archive.style.transform=`translate3d(0,${p*-34}px,0) scale(1.08)`;depthTick=false;};
+    addEventListener('scroll',()=>{if(!depthTick){depthTick=true;requestAnimationFrame(renderDepth);}},{passive:true});renderDepth();
+  }
+}
