@@ -402,3 +402,25 @@ body.menu-open{overflow:hidden}
   .global-nav a:last-child{border-bottom:none!important}
   .site-header{z-index:103}
 }
+
+/* ---- Mobile overflow hardening ---- */
+html,body{width:100%;max-width:100%;overflow-x:clip}
+body{position:relative}
+main,article,section,header,footer,nav,.wrap,.hero,.hero-copy,.timeline,.timeline-track,.timeline-item{min-width:0;max-width:100%}
+.site-header{width:100%;max-width:100vw}
+.timeline-nav{max-width:100%;overflow:visible}
+.timeline-nav button{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.timeline-item p,.timeline-item h3,.lead,h1,h2,h3{overflow-wrap:anywhere;word-break:normal}
+@media(max-width:640px){
+  .wrap{width:calc(100% - 2rem);max-width:calc(100% - 2rem)}
+  .site-header{padding:.85rem 1rem;gap:.75rem;overflow:hidden}
+  .site-header .brand{font-size:.82rem;letter-spacing:.045em;min-width:0;max-width:calc(100% - 5.5rem);overflow:hidden;text-overflow:ellipsis}
+  .menu-button{flex:0 0 auto;min-width:4.65rem!important}
+  .timeline-nav{position:relative;top:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;padding:.5rem 0 1.25rem;background:transparent}
+  .timeline-nav button{width:100%;padding:.65rem .55rem;line-height:1.45}
+  .timeline-track{padding-left:.75rem;margin-left:.35rem}
+  .timeline-item{padding-left:1rem;padding-right:0}
+  .timeline-item::before{left:-1.34rem}
+  .hero{padding-top:3.5rem}
+  article.wrap{overflow:hidden}
+}
