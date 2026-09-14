@@ -424,3 +424,8 @@ main,article,section,header,footer,nav,.wrap,.hero,.hero-copy,.timeline,.timelin
   .hero{padding-top:3.5rem}
   article.wrap{overflow:hidden}
 }
+
+@media(max-width:900px){
+  .global-nav.open{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important;display:flex!important}
+  .global-nav:not(.open){pointer-events:none!important}
+}
