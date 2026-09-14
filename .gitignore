@@ -1,0 +1,10 @@
+# Local QA artifacts
+qa-*.png
+lh*.json
+tmp_frames/
+claude-*.txt
+gemini-*.txt
+
+# OS / editor
+.DS_Store
+Thumbs.db
