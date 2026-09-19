@@ -471,3 +471,23 @@ main,article,section,header,footer,nav,.wrap,.hero,.hero-copy,.timeline,.timelin
 .network-footer-grid a:hover,.network-footer-grid a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:.22em}
 @media(max-width:760px){.network-footer{margin-top:2.6rem;padding-top:1.7rem}.network-footer-head{align-items:start}.network-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem 1.2rem}.network-footer-grid h2{font-size:.72rem}.network-footer-grid a{font-size:.82rem}}
 @media(max-width:430px){.network-footer-grid{grid-template-columns:1fr 1fr;gap:1.45rem .9rem}.network-footer-head p{display:none}}
+
+/* ---- Special feature link / Civilization Memory ---- */
+.plate-linked{cursor:pointer}.plate-full-link{position:absolute;inset:0;z-index:3;border:0;text-decoration:none}
+.plate-linked:focus-within{outline:2px solid var(--gold-bright);outline-offset:3px}
+.civ-feature{--civ-max:1180px}.civ-hero{min-height:78svh;position:relative;display:grid;align-items:end;overflow:hidden;border-bottom:1px solid var(--line)}
+.civ-hero-media{position:absolute;inset:0}.civ-hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) contrast(1.08) brightness(.58)}
+.civ-hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,11,.16),rgba(5,7,11,.9)),linear-gradient(90deg,rgba(5,7,11,.72),transparent 68%)}
+.civ-hero-copy{position:relative;z-index:2;padding:clamp(7rem,16vw,12rem) 0 clamp(3rem,7vw,6rem)}.civ-hero h1{font-size:clamp(3.2rem,9vw,8.5rem);line-height:.9;letter-spacing:-.04em;max-width:8ch}
+.civ-hero .lead{max-width:52ch;color:var(--ivory-dim)}.civ-section{padding:clamp(4.5rem,10vw,9rem) 0;border-bottom:1px solid var(--line)}
+.civ-intro{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(2rem,8vw,8rem)}.civ-intro h2,.civ-section h2{font-size:clamp(2.2rem,5vw,5rem);line-height:1.08}
+.civ-layers{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:3rem}
+.civ-layer{padding:1.4rem;min-height:260px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
+.civ-layer span{font-size:.68rem;letter-spacing:.13em;color:var(--gold)}.civ-layer h3{font-family:var(--serif);font-size:1.45rem;margin:.7rem 0}.civ-layer p{color:var(--ivory-dim);font-size:.88rem}
+.civ-ledger{display:grid;grid-template-columns:1fr 1fr;margin-top:2.5rem;border-top:1px solid var(--line)}.civ-ledger article{padding:1.5rem 0;border-bottom:1px solid var(--line)}.civ-ledger article:nth-child(odd){padding-right:2rem}.civ-ledger article:nth-child(even){padding-left:2rem;border-left:1px solid var(--line)}
+.civ-ledger small{display:block;color:var(--gold);letter-spacing:.1em}.civ-ledger h3{font-size:1.3rem;margin:.35rem 0}.civ-ledger p{color:var(--ivory-dim)}
+.civ-bridge{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,7vw,7rem);align-items:start}.civ-note{padding:1.4rem;border:1px solid var(--line);background:#090b11}.civ-note p{color:var(--ivory-dim)}
+.civ-related{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2rem}.civ-related a{background:#080a10;padding:1.4rem;text-decoration:none;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end}.civ-related small{color:var(--gold);letter-spacing:.08em}.civ-related strong{font-family:var(--serif);font-size:1.15rem;margin-top:.35rem}
+@media(max-width:900px){.civ-intro,.civ-bridge{grid-template-columns:1fr}.civ-layers{grid-template-columns:1fr 1fr}.civ-related{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.civ-hero{min-height:70svh}.civ-hero h1{font-size:clamp(3rem,17vw,5rem)}.civ-layers{grid-template-columns:1fr}.civ-layer{min-height:180px}.civ-ledger{grid-template-columns:1fr}.civ-ledger article:nth-child(odd),.civ-ledger article:nth-child(even){padding:1.25rem 0;border-left:0}.civ-related{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.plate-linked img{transition:none}}
