@@ -1,40 +1,18 @@
-# HANDOFF
+# HANDOFF — 2026-11-25
 
-## Project
-akashic-records-jp
+本番: https://oosaka0123-sudo.github.io/akashic-records-jp/
+リポジトリ: oosaka0123-sudo/akashic-records-jp / main
 
-## Current status
-- Repository created
-- Master plan added
-- Content architecture added
-- Agent rules added
-- Initial editorial direction defined
+## 現在の正本
+- 静的HTML/CSS/JS
+- GitHub Actions Pages deploy
+- 公開物は workflow が _site にステージしたものだけ
 
-## Current objective
-Build the first production-ready version of a Japanese Akashic Records educational site.
+## 直近のクロスレビュー
+ChatGPT・Claude Code・Gemini Webで独立監査。共通指摘を優先し、コード上で確認できない推測は採用していない。GSC/sitemapは既に設定済みのため再登録していない。
 
-## Next actions
-1. Decide technical stack
-2. Scaffold the site
-3. Build homepage
-4. Build article template
-5. Implement global navigation and footer
-6. Add sitemap / robots / metadata / structured data
-7. Draft the first 10 cornerstone articles
-8. Run mobile, accessibility, performance and factual review
-9. Deploy preview
-
-## Important editorial rule
-Separate historical facts, source claims, modern interpretations, personal beliefs and scientific evidence.
-
-## Do not
-- Publish invented citations
-- Present speculation as established fact
-- Use scientific terminology as decoration
-- Mass-produce thin SEO pages
-
-## Source of truth
-- MASTER_PLAN.md
-- CONTENT_ARCHITECTURE.md
-- AGENTS.md
-- ops/project-state.json
+## 次回確認
+1. Actions Pages deploy 成功
+2. 本番トップ/guide/人物/科学/404の表示
+3. Search Consoleは既存プロパティを維持し、重複作成しない
+4. 史実・出典を追加する場合はURLと原文を確認してから反映

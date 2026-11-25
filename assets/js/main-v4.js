@@ -1,17 +1,10 @@
-const button=document.querySelector('.menu-button');
-const nav=document.querySelector('.global-nav');
-if(button&&nav){
-  const setOpen=(open)=>{
-    nav.classList.toggle('open',open);
-    button.setAttribute('aria-expanded',String(open));
-    button.textContent=open?'\u00d7':'MENU';
-    document.body.classList.toggle('menu-open',open);
-    const imp=(k,v)=>nav.style.setProperty(k,v,'important');
-    if(open){imp('transition','none');imp('display','flex');imp('opacity','1');imp('visibility','visible');imp('position','fixed');imp('inset','0');imp('z-index','101');imp('transform','none');imp('pointer-events','auto');}
-    else{['transition','opacity','visibility','transform','pointer-events','position','inset','z-index','display'].forEach(k=>nav.style.removeProperty(k));}
-  };
-  setOpen(false);
-  button.addEventListener('click',()=>setOpen(!nav.classList.contains('open')));
-  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
-  window.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false);});
-}
+document.addEventListener('DOMContentLoaded',()=>{
+const b=document.querySelector('.menu-button'),n=document.querySelector('.global-nav');let lastFocus=null;
+const focusables=()=>n?[...n.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex=\"-1\"])')]:[];
+const setMenu=open=>{if(!b||!n)return;b.setAttribute('aria-expanded',String(open));b.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');b.textContent=open?'×':'MENU';n.classList.toggle('open',open);document.body.classList.toggle('menu-open',open);if(open){lastFocus=document.activeElement;const f=focusables();(f[0]||b).focus()}else if(lastFocus){b.focus();lastFocus=null}};
+if(b&&n){b.setAttribute('aria-label','メニューを開く');b.addEventListener('click',()=>setMenu(b.getAttribute('aria-expanded')!=='true'));n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));document.addEventListener('keydown',e=>{if(b.getAttribute('aria-expanded')!=='true')return;if(e.key==='Escape'){e.preventDefault();setMenu(false);return}if(e.key==='Tab'){const f=focusables();if(!f.length)return;const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}})}
+const explorer=document.querySelector('[data-memory-explorer]');if(explorer){const title=explorer.querySelector('[data-memory-title]'),copy=explorer.querySelector('[data-memory-copy]'),nodes=[...explorer.querySelectorAll('[data-key]')];
+const data={akashic:['AKASHIC RECORDS','中央概念。歴史的な系譜と、後世に指摘された類似概念を分けて読むことが重要です。'],akasha:['アーカーシャ（ĀKĀŚA）','語源上のつながりはありますが、古代インド思想のアーカーシャと近代の「宇宙の記録庫」を同一概念として扱うことはできません。'],theosophy:['神智学（THEOSOPHY）','19世紀後半の神智学は、近代的なアカシック概念が形成される重要な歴史的文脈です。'],jung:['集合的無意識（JUNG）','共有された無意識という発想には概念的な類似がありますが、アカシックレコードと同じ系譜の理論ではありません。'],alaya:['阿頼耶識（ĀLAYA）','経験の種子を蔵するという唯識の概念と比較されますが、成立背景も教義上の位置づけも異なる別体系です。'],quantum:['量子力学（QUANTUM）','量子力学はアカシックレコードの実在を実証する根拠ではありません。「情報」「観測」などの用語の類似と科学的証明は区別が必要です。']};
+const choose=node=>{nodes.forEach(x=>{x.classList.toggle('is-selected',x===node);x.setAttribute('aria-pressed',String(x===node))});const d=data[node.dataset.key];if(d){title.textContent=d[0];copy.textContent=d[1]}};
+nodes.forEach(node=>{node.setAttribute('role','button');node.setAttribute('aria-pressed','false');node.addEventListener('click',()=>choose(node));node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(node)}})});const core=nodes.find(x=>x.dataset.key==='akashic');if(core)choose(core)}
+const video=document.querySelector('.cinema-hero video'),toggle=document.querySelector('[data-video-toggle]');if(video&&toggle){const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;const sync=()=>{const paused=video.paused;toggle.setAttribute('aria-pressed',String(paused));toggle.setAttribute('aria-label',paused?'背景動画を再生':'背景動画を一時停止');toggle.textContent=paused?'動画を再生':'動画を一時停止'};if(reduced)video.pause();toggle.addEventListener('click',()=>{if(video.paused){video.play().catch(()=>{})}else video.pause();sync()});video.addEventListener('play',sync);video.addEventListener('pause',sync);sync()}});
